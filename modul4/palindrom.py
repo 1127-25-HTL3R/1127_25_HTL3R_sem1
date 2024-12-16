@@ -7,17 +7,57 @@ def is_palindrom(s: str):
     """
     This method checks if the string s, which contains only one word, is a
     palindrome.
+
+    >>> is_palindrom("racecar")
+    True
+
+    >>> is_palindrom("string")
+    False
     """
+
+    first_list = list(s)
+    second_list = list(s)
+    second_list.reverse()
+
+    print(first_list)
+    print(second_list)
+
+    if first_list == second_list:
+        return True
+    else:
+        return False
 
 
 def is_palindrome_sentence(s: str):
     """
     Checks is the string s, which may contain a sentence, is a palindrome
     sentence.
+
+    >>> is_palindrome_sentence("Was it a car or a cat I saw?")
+    True
+
+    >>> is_palindrome_sentence("Able was ere I saw Elba")
+    True
+
+    >>> is_palindrome_sentence("A Toyota")
+    True
     """
 
+    string = s.lower()
 
-def paindrome_product(x):
+    string = string.replace(" ", "")
+    string = string.replace(";", "")
+    string = string.replace("?", "")
+    string = string.replace(".", "")
+    string = string.replace(",", "")
+    string = string.replace(":", "")
+    string = string.replace("!", "")
+
+
+    return is_palindrom(string)
+
+
+def palindrome_product(x):
     """
     Finds the biggest palindrome number (smaller than x), which is the prodcut
     of 3 digit number
@@ -43,3 +83,4 @@ def to_base(number: int, base: int) -> str:
 
 
 if __name__ == "__main__":
+    print("Hello World")
