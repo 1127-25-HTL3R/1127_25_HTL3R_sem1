@@ -36,32 +36,34 @@ def is_palindrome_sentence(s: str):
     >>> is_palindrome_sentence("Was it a car or a cat I saw?")
     True
 
-    >>> is_palindrome_sentence("Able was ere I saw Elba")
+    >>> is_palindrome_sentence("Do Geese see God?")
     True
 
     >>> is_palindrome_sentence("A Toyota")
     True
+
+    >>> is_palindrome_sentence("Warsaw was raw")
+    True
+
     """
 
+    char_list = (" ", ";", "?", ".", ",", ":", "!")
     string = s.lower()
 
-    string = string.replace(" ", "")
-    string = string.replace(";", "")
-    string = string.replace("?", "")
-    string = string.replace(".", "")
-    string = string.replace(",", "")
-    string = string.replace(":", "")
-    string = string.replace("!", "")
-
+    for char in char_list:
+        string = string.replace(char, "")
 
     return is_palindrom(string)
 
 
 def palindrome_product(x):
     """
-    Finds the biggest palindrome number (smaller than x), which is the prodcut
+    Finds the biggest palindrome number (smaller than x), which is the product
     of 3 digit number
     """
+
+
+
 
 
 def get_dec_hex_palindrom(x):
@@ -84,3 +86,5 @@ def to_base(number: int, base: int) -> str:
 
 if __name__ == "__main__":
     print("Hello World")
+    var = "ss"
+    print(len(var))
