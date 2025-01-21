@@ -54,7 +54,17 @@ public class finiteStateMachine {
 		// if inside html-tag
 		INHTMLTAG {
 			@Override
-
+			finiteStateMachine.State handleChar(char c, finiteStateMachine context) {
+				if (c == '\\') {
+					return INHTMLTAGESCAPED;
+				} else if (c == "\"") {
+					return INHTMLTAGQUOTE;
+				} else if (c == ">") {
+					return MIGHTBEWORD;
+				} else {
+					return INHTMLTAG;
+				}
+			}
 		},
 		// if in html-tag and escaped with '\'
 		INHTMLTAGESCAPED {
