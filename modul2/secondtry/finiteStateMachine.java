@@ -34,6 +34,22 @@ public class finiteStateMachine {
 		// New word
 		NEWWORD {
 			@Override
+			finiteStateMachine.State handleChar(char c, finiteStateMachine context) {
+				if (isLetter(c)) {
+					if (stringLength == iterationCounter) {
+						iterationCounter = 0;
+						context.counter++;
+					}
+					return NEWWORD;
+				}
+				if (c == '<') {
+					context.counter++;
+					return INHTMLTAG;
+				} else {
+					context.counter++;
+					return MIGHTBEWORD;
+				}
+			}
 		},
 		// if inside html-tag
 		INHTMLTAG {
