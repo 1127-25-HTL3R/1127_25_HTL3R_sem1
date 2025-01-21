@@ -5,7 +5,7 @@ import org.junit.*
 class secondTry {
 
 	/**
-	* Test-Methode zu Bezahl
+	* Test method for testing the FSM.
 	*/
 	@Test
 	void test() {
