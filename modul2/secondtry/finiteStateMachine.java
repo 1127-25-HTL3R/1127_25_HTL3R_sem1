@@ -57,9 +57,9 @@ public class finiteStateMachine {
 			finiteStateMachine.State handleChar(char c, finiteStateMachine context) {
 				if (c == '\\') {
 					return INHTMLTAGESCAPED;
-				} else if (c == "\"") {
+				} else if (c == '\"') {
 					return INHTMLTAGQUOTE;
-				} else if (c == ">") {
+				} else if (c == '>') {
 					return MIGHTBEWORD;
 				} else {
 					return INHTMLTAG;
@@ -69,23 +69,38 @@ public class finiteStateMachine {
 		// if in html-tag and escaped with '\'
 		INHTMLTAGESCAPED {
 			@Override
+			finiteStateMachine.State handleChar(char c, finiteStateMachine context) {
+				return INHTMLTAG;
+			}
 		},
 		// if in html-tag and in '"' / block-quotes
 		INHTMLTAGQUOTE {
 			@Override
+			finiteStateMachine.State handleChar(char c, finiteStateMachine.context) {
+				if (c == '\\') {
+					return INHTMLTAGESCAPED;
+				} else if (c == '\"') {
+					return INHTMLTAG;
+				} else {
+					return INHTMLTAGQUOTE;
+				}
+			}
 		},
 		// if in html-tag and escaped and in block-quotes
 		INHTMLTAGQUOTEESCAPED {
 			@Override
-		}
-	};
-
+			finiteStateMachine.State handleChar(char c, finiteStateMachine.context) {
+				return INHTMLTAGQUOTE;
+			}
+		};
 	/**
 	  * @param c current iterated character
 	  * @param context a finiteStateMachine
 	  * @return the current state
 	  */
 	abstract finiteStateMachine.State handleChar(char c, finiteStateMachine context);
+	}
+
 
 	/**
 	  * @param c currently iterated character
@@ -97,4 +112,14 @@ public class finiteStateMachine {
                     || (c == 'ä') || (c == 'ö') || (c == 'ü') || (c == 'ß'
             	);
 	}
+
+
+
+
+
+
+
+
+
+
 }
