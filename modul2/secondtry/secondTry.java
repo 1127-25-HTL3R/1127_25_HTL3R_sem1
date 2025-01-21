@@ -1,19 +1,21 @@
-package secondtry;
+package modul2.secondtry;
 
-import org.junit.*
+import org.junit.*;
+import modul2.secondtry.*;
 
 class secondTry {
 
 	/**
 	* Test method for testing the FSM.
+	* @author Felix Friesenbichler
 	*/
 	@Test
 	void test() {
-
 		// leicht
-        assertEquals(0, new BezahlungFSM().count(""));
-        assertEquals(0, new BezahlungFSM().count(" "));
-        assertEquals(0, new BezahlungFSM().count("  "));
+        assertEquals(0, new finiteStateMachine().count(""));
+        assertEquals(0, new finiteStateMachine().count(" "));
+        assertEquals(0, new finiteStateMachine().count("  "));
+
 
         // normal
         assertEquals(1, new BezahlungFSM().count("one"));
