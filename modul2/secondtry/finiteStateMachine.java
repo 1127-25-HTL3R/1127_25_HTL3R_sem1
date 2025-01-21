@@ -17,6 +17,18 @@ public class finiteStateMachine {
 		// Possible next word.
 		MIGHTBEWORD {
 			@Override
+			finiteStateMachine.State handleChar(char c, finiteStateMachine context) {
+				if (isLetter(c)) {
+					if (iterationCounter - stringLength == 0) {
+						context.counter++;
+					}
+					return NEWWORD;
+				} else if (c == '<') {
+					return INHTMLTAG;
+				} else {
+					return MIGHTBEWORD;
+				}
+			}
 
 		},
 		// New word
