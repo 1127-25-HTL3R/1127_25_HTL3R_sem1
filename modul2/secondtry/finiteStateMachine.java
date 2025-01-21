@@ -115,11 +115,19 @@ public class finiteStateMachine {
 
 
 
-
-
-
-
-
-
-
+	/**
+	  * @param text the string whose words are to be counted
+	  @ @return the amount of words in the string
+	  */
+	public int count(String text) {
+		finiteStateMachine.State state = finiteStateMachine.State.MIGHTBEWORD;
+		stringLength = text.length()
+		counter = 0;
+		iterationCounter = 0;
+		for (char c: text.toCharArray()) {
+			iterationCounter++
+			state = state.handleChar(c, this);
+		}
+		return counter;
+	}
 }
